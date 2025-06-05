@@ -1,0 +1,137 @@
+/* === GLOBAL RESET === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+/* === PAGE LAYOUT === */
+.input-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: black;
+}
+
+.input-content {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+/* === HEADER === */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #111;
+}
+
+/* === FORM STYLING === */
+.form-group {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #fff;
+  color: #222;
+}
+
+/* === BUTTONS === */
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: black;
+  color: #66f7d5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  box-shadow: 0 0 8px #66f7d5;
+}
+
+/* === SKILLS + PROJECTS === */
+.skills-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 1.5rem;
+}
+
+/* === SOCIAL LINKS === */
+input[type="url"] {
+  margin-bottom: 0.75rem;
+}
+
+/* === FINAL GENERATE BUTTON === */
+.generate-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #000;
+  color: #66f7d5;
+  border: 2px solid white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.generate-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #66f7d5;
+}
+.input-content,
+.input-page,
+h1,
+label,
+input,
+textarea,
+select
+ {
+  color: black;
+}
