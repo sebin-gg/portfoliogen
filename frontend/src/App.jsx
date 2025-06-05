@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
-      <Route path="/input" element={<InputPage />} />
+      <Route path="/form" element={<InputPage />} />
       <Route path="/result" element={<ResultPage />} />
     </Routes>
   );

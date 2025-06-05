@@ -67,26 +67,36 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
-.decor-strips {
-  position: fixed;
-  bottom: -40px; /* moves it partly off screen */
-  right: -60px;  /* shifts it to right side */
-  transform: rotate(-40deg); /* steeper angle */
-  display: flex;
-  gap: 10px;
-  
+.glow-frame {
+  border: 2px solid #66F7D5;
+  padding: 3rem;
+  margin: 4rem auto;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 25px #66F7D5;
+  backdrop-filter: blur(2px);
+  transition: box-shadow 0.3s ease-in-out;
+  z-index: 1;
+  position: relative;
 }
 
-.strip {
-  width: 150px;
-  height: 8px;
-  border-radius: 2px;
+/* Optional: on hover, make it glow more */
+.glow-frame:hover {
+  box-shadow: 0 0 35px #66F7D5, 0 0 50px #66F7D5;
 }
 
-.strip-white {
-  background-color: white;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glow-frame {
+    width: 90%;
+    padding: 2rem;
+  }
 }
 
-.strip-colored {
-  background-color: #66F7D5;
+@media (max-width: 480px) {
+  .glow-frame {
+    width: 95%;
+    padding: 1.5rem;
+  }
 }
