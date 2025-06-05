@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap');
+
+.result-page {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #66f7d5;
+}
+
+/* Glowy box */
+.result-box {
+  border: 2px solid #66f7d5;
+  box-shadow: 0 0 20px #66f7d5;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Heading */
+.result-heading {
+  font-family: 'Stint Ultra Condensed', cursive;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #66f7d5;
+}
+
+/* URL Box */
+.url-box {
+  padding: 1rem;
+  border: 2px solid white;
+  background-color: black;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  word-break: break-all;
+}
+
+/* Button */
+.copy-btn {
+  background-color: black;
+  color: #66f7d5;
+  border: 1px solid white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.copy-btn:hover {
+  box-shadow: 0 0 10px #66f7d5;
+}
+
+/* Toast */
+.copied-msg {
+  margin-top: 1rem;
+  background-color: #66f7d5;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: fade 2s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.generate-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: black;
+  color: #66f7d5;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.generate-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #66f7d5;
+}
