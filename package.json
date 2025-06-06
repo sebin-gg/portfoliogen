@@ -1,6 +1,30 @@
 {
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "react-confetti": "^6.4.0",
     "react-router-dom": "^7.6.2"
-  }
+  },
+  "name": "portfoliogen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebin-gg/portfoliogen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebin-gg/portfoliogen/issues"
+  },
+  "homepage": "https://github.com/sebin-gg/portfoliogen#readme"
 }
