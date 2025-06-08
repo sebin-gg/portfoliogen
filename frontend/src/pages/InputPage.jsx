@@ -177,25 +177,17 @@ const InputPage = () => {
           )}
         </div>
 
-        {/* Social Links */}
-        <div className="form-group">
-          <label>Social Links</label>
-          <input type="url" name="linkedin" placeholder="LinkedIn" />
-          <input type="url" name="github" placeholder="GitHub" />
-          <input type="url" name="instagram" placeholder="Instagram" />
-        </div>
-
-        {/* Theme */}
-        <div className="form-group">
-          <label>Select a Theme*</label>
-          <select name="theme" required>
-            <option value="">--Choose a Theme--</option>
-            <option value="pastel">Pastel Play</option>
-            <option value="minimal">Modern Minimal</option>
-            <option value="vibrant">Vibrant Vibes</option>
-            <option value="classic">Classic Portfolio</option>
-          </select>
-        </div>
+      {/* Theme Selection */}
+      <div className="form-group">
+        <label>Select a Theme*</label>
+        <select required>
+          <option value="">--Choose a Theme--</option>
+          <option value="pastel">Professional Blue</option>
+          <option value="minimal">Earthy Calm</option>
+          <option value="vibrant">Playful Macaron</option>
+          <option value="classic">Lavender Fields</option>
+        </select>
+      </div>
 
         {/* Submit Button */}
         <div className="form-group">
