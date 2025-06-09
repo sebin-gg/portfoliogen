@@ -61,7 +61,7 @@ const InputPage = () => {
     };
 
     // POST data as JSON
-    fetch("http://localhost:5173/form", {
+    fetch("http://localhost:3001/form", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -134,6 +134,7 @@ const InputPage = () => {
                 {skill} <button type="button" onClick={() => handleSkillRemove(idx)}>x</button>
               </div>
             ))}
+
           </div>
           <button type="button">✨ Suggest Skills with AI</button>
         </div>
@@ -177,17 +178,6 @@ const InputPage = () => {
           )}
         </div>
 
-      {/* Theme Selection */}
-      <div className="form-group">
-        <label>Select a Theme*</label>
-        <select name= "theme" required>
-          <option value="">--Choose a Theme--</option>
-          <option value="pastel">Professional Blue</option>
-          <option value="minimal">Earthy Calm</option>
-          <option value="vibrant">Playful Macaron</option>
-          <option value="classic">Lavender Fields</option>
-        </select>
-      </div>
 {/* Social Links */}
 <div className="form-group">
   <label>Social Links</label>
@@ -209,6 +199,19 @@ const InputPage = () => {
     placeholder="Instagram Profile URL"
   />
 </div>
+
+      {/* Theme Selection */}
+      <div className="form-group">
+        <label>Select a Theme*</label>
+        <select name= "theme" required>
+          <option value="">--Choose a Theme--</option>
+          <option value="pastel">Professional Blue</option>
+          <option value="minimal">Earthy Calm</option>
+          <option value="vibrant">Playful Macaron</option>
+          <option value="classic">Lavender Fields</option>
+        </select>
+      </div>
+
         {/* Submit Button */}
         <div className="form-group">
           <button className="generate-btn" type="submit">

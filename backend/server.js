@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 // Enable CORS for cross-origin requests
 app.use(cors());
-console.log('hio')
 app.use(express.json());
 
 app.post('/form', (req, res) => {
@@ -33,4 +32,4 @@ app.post('/form', (req, res) => {
   console.log('Received JSON:', data);
 });
 
-app.listen(5173, () => console.log("Server running on port 5173"));
+app.listen(3001, () => console.log("Server running on port 3001"));
