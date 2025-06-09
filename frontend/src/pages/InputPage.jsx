@@ -188,7 +188,27 @@ const InputPage = () => {
           <option value="classic">Lavender Fields</option>
         </select>
       </div>
-
+{/* Social Links */}
+<div className="form-group">
+  <label>Social Links</label>
+  <input
+    type="url"
+    name="linkedin"
+    placeholder="LinkedIn Profile URL"
+    required
+  />
+  <input
+    type="url"
+    name="github"
+    placeholder="GitHub Profile URL"
+    required
+  />
+  <input
+    type="url"
+    name="instagram"
+    placeholder="Instagram Profile URL"
+  />
+</div>
         {/* Submit Button */}
         <div className="form-group">
           <button className="generate-btn" type="submit">
