@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 // Enable CORS for cross-origin requests
 app.use(cors());
-
+console.log('hio')
 app.use(express.json());
 
 app.post('/form', (req, res) => {
