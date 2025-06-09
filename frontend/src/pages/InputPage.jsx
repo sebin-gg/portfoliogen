@@ -65,6 +65,7 @@ const InputPage = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
+      
     })
       .then((res) => res.blob())
       .then((blob) => {
@@ -74,8 +75,9 @@ const InputPage = () => {
         a.download = "portfolio.json";
         a.click();
         navigate("/result");
+        console.log('client json sent');
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log('json not sent'));
   };
 
   return (
