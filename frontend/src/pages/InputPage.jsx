@@ -3,50 +3,48 @@ import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
 
 const InputPage = () => {
-  // State for skills list and skill input
+
   const [skills, setSkills] = useState([]);
   const [skillInput, setSkillInput] = useState("");
 
-  // State for projects (max 3)
+
   const [projects, setProjects] = useState([{ name: "", description: "", techStack: "", github: "" }]);
 
   const navigate = useNavigate();
 
-  // Add skill if not empty and not duplicate
+
   const handleSkillAdd = () => {
     if (skillInput.trim() && !skills.includes(skillInput.trim())) {
       setSkills([...skills, skillInput.trim()]);
       setSkillInput("");
     }
   };
-
-  // Remove skill by index
+  
   const handleSkillRemove = (index) => {
     setSkills(skills.filter((_, i) => i !== index));
   };
-
-  // Update project field value
+  
   const handleProjectChange = (index, field, value) => {
     const updatedProjects = [...projects];
     updatedProjects[index][field] = value;
     setProjects(updatedProjects);
   };
 
-  // Add new empty project if less than 3
+
   const addProject = () => {
     if (projects.length < 3) {
       setProjects([...projects, { name: "", description: "", techStack: "", github: "" }]);
     }
   };
 
-  // Handle form submit: collect data and POST to backend
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Collect form data from DOM (not managed by state)
+ 
     const form = event.target;
 
-    // Create form data object
+ 
     const formData = {
       fullName: form.fullName.value,
       aboutMe: form.aboutMe.value,
@@ -180,7 +178,7 @@ const InputPage = () => {
       {/* Theme Selection */}
       <div className="form-group">
         <label>Select a Theme*</label>
-        <select required>
+        <select name= "theme" required>
           <option value="">--Choose a Theme--</option>
           <option value="pastel">Professional Blue</option>
           <option value="minimal">Earthy Calm</option>
