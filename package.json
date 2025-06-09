@@ -9,5 +9,23 @@
   },
   "dependencies": {
     "react-confetti": "^6.4.0"
-  }
+  },
+  "name": "portfoliogen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebin-gg/portfoliogen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebin-gg/portfoliogen/issues"
+  },
+  "homepage": "https://github.com/sebin-gg/portfoliogen#readme"
 }
