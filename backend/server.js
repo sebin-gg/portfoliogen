@@ -3,14 +3,14 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 const path = require('path');
-
+// Enable CORS for cross-origin requests
 app.use(cors());
 
 app.use(express.json());
 
 app.post('/form', (req, res) => {
   const data = req.body;               // Get JSON data from request body
-  const { name } = data;               // Extract 'name' from data for filename
+  const name = data.fullName.replace(/\s+/g, '_') || 'portfolio';
   // Define directory path to save user data
   const dir = path.join(__dirname, 'userData');
   // Create directory if it doesn't exist
