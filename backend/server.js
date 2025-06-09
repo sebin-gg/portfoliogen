@@ -7,29 +7,26 @@ const path = require('path');
 app.use(cors());
 app.use(express.json());
 
+app.use('/public',express.static(path.join(__dirname,'public')));
 app.post('/form', (req, res) => {
-  const data = req.body;               // Get JSON data from request body
-  const name = data.fullName.replace(/\s+/g, '_') || 'portfolio';
+  const data = req.body;        // Get JSON data from request body
+  const theme = data.theme;     
   // Define directory path to save user data
-  const dir = path.join(__dirname, 'userData');
-  // Create directory if it doesn't exist
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  // Define full file path for JSON file
-  const filePath = path.join(dir, `${name}.json`);
-  // Write JSON data to file with pretty formatting
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+const templatepath=path.join(__dirname,'templates',`${theme}.html`);
+const outputDir = path.join(__dirname, 'public');
+const outputFileName = `${theme}_${Date.now()}.html`;
+const outputPath = path.join(outputDir,outputFileName);
 
-  res.download(filePath, (err) => {
-    if (err) {
-      console.error('Download error:', err);
-      // Send error response if download fails
-      res.status(500).send('Error downloading file');
-    }
+  fs.readFile(templatepath, 'utf-8', (err, html) => {
+    if (err) return res.status(500).send('Template not found.');
+
+    const filledHtml = html.replace('__DATA__', JSON.stringify(data-theme));
+
+    fs.writeFile(outputPath, filledHtml, (err) => {
+      if (err) return res.status(500).send('Failed to write HTML file.');
+      res.send({ link: `/public/${outputFileName}` });
+    });
   });
-  // Log received JSON data to console
-  console.log('Received JSON:', data);
 });
 
 app.listen(3001, () => console.log("Server running on port 3001"));
