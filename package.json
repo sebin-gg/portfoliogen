@@ -8,6 +8,7 @@
     "client": "cd frontend && npm run dev"
   },
   "dependencies": {
+    "archiver": "^7.0.1",
     "express": "^5.1.0",
     "react-confetti": "^6.4.0",
     "vite": "^6.3.5"
