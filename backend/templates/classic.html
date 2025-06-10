@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="portfolio-container">
-    
+
     <div class="left-section">
       <h1 class="intro-title">Hi, I'm <span id="user-name">[Your Name]</span>!</h1>
       <p class="about" id="about-text">
@@ -56,8 +56,40 @@
           <a href="#" id="instagram-link">Instagram</a>
         </div>
       </div>
-    </div>
-    
+    </div>    
   </div>
+  <script>
+  const data = __DATA__;
+
+  document.getElementById("user-name").innerText = data.fullName;
+  document.getElementById("about-text").innerText = data.about;
+
+  // Skills
+  const skillsList = document.getElementById("skills-list");
+  data.skills.forEach(skill => {
+    const li = document.createElement("li");
+    li.textContent = skill;
+    skillsList.appendChild(li);
+  });
+
+  // Projects
+  const projectsSection = document.getElementById("projects-section");
+  data.projects.forEach(project => {
+    const div = document.createElement("div");
+    div.className = "project";
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
+    projectsSection.appendChild(div);
+  });
+
+  // Profile picture and contact
+  document.querySelector(".profile-pic img").src = data.profilePic;
+  document.getElementById("email").innerText = data.email;
+  document.getElementById("phone").innerText = data.phone;
+
+  // Social links
+  document.getElementById("linkedin-link").href = data.socials.linkedin;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
+</script>
 </body>
 </html>

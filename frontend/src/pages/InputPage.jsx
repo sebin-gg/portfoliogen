@@ -72,7 +72,7 @@ const InputPage = () => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "portfolio.json";
+        a.download = "portfolio.html";
         a.click();
         navigate("/result");
         console.log('client json sent');
