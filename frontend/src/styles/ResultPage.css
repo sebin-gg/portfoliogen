@@ -30,16 +30,7 @@
   color: #66f7d5;
 }
 
-/* URL Box */
-.url-box {
-  padding: 1rem;
-  border: 2px solid white;
-  background-color: black;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  word-break: break-all;
-}
+
 
 /* Button */
 .copy-btn {
@@ -52,9 +43,7 @@
   font-size: 1rem;
 }
 
-.copy-btn:hover {
-  box-shadow: 0 0 10px #66f7d5;
-}
+
 
 /* Toast */
 .copied-msg {
@@ -83,7 +72,7 @@
   border: 2px solid white;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 0.00001cm;
   transition: all 0.3s ease;
 }
 
