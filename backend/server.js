@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/form', (req, res) => {
-  const { theme, ...data } = req.body;
+  const { theme, ...data } = req.body; 
   console.log('Theme received:', theme);
   if (!theme) {return res.status(400).send("Theme is missing.")};
   const templatePath = path.join(__dirname, 'templates', `${theme}.html`);
@@ -19,7 +19,7 @@ app.post('/form', (req, res) => {
   if (!fs.existsSync(outputDir)) {fs.mkdirSync(outputDir);};
   const outputFileName = `${theme}_${Date.now()}.html`;
   const outputPath = path.join(outputDir, outputFileName);
-  console.log('hi:',theme);
+
   fs.readFile(templatePath, 'utf-8', (err, html) => {
     if (err) return res.status(500).send('Template not found',err);
 
