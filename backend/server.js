@@ -23,7 +23,7 @@ app.post('/form', (req, res) => {
   fs.readFile(templatePath, 'utf-8', (err, html) => {
     if (err) return res.status(500).send('Template not found',err);
 
-    const filledHtml = html.replace('__DATA__', JSON.stringify(data));
+    const filledHtml = html.replace('__DATA__', JSON.stringify(data).replace(/</g, '\\u003c'));
 
     fs.writeFile(outputPath, filledHtml, (err) => {
       if (err) return res.status(500).send('Failed to write HTML file.');

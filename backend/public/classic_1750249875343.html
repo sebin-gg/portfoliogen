@@ -20,6 +20,8 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  flex-wrap: nowrap;
+  flex-direction: row;
   min-height: 100vh;
   padding: 2rem;
   margin: 2rem;
@@ -30,6 +32,7 @@
 /* === LEFT SECTION === */
 .left-section {
   flex: 1;
+  min-width: 60%;
   padding-right: 2rem;
 }
 
@@ -280,10 +283,11 @@
     </div>    
   </div>
   <script>
-  const data = __DATA__;
+  const data = JSON.parse('{"fullName":"Lisha jins","aboutMe":"tqthuqypu","email":"lishajins2006@gmail.com","phone":"7592039087","skills":["c","r"],"projects":[{"name":"portfolio","description":"gwhh","techStack":"ghhw","github":"https://github.com/Lishajins/GitFinder"}],"socialLinks":{"linkedin":"https://github.com/Lishajins/GitFinder","github":"https://github.com/Lishajins/GitFinder","instagram":"https://github.com/Lishajins/GitFinder"}}');
+
 
   document.getElementById("user-name").innerText = data.fullName;
-  document.getElementById("about-text").innerText = data.aboutMe;
+  document.getElementById("about-text").innerText = data.about;
 
   // Skills
   const skillsList = document.getElementById("skills-list");
@@ -295,13 +299,17 @@
 
   // Projects
   const projectsSection = document.getElementById("projects-section");
-   if (Array.isArray(data.projects)) {
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
+    div.innerHTML = `
+  <h3>${project.name}</h3>
+  <p>${project.description}</p>
+  ${project.github ? `<a href="${project.github}" target="_blank">GitHub ↗</a>` : ""}
+`;
+
     projectsSection.appendChild(div);
-  });}
+  });
 
   // Profile picture and contact
   document.querySelector(".profile-pic img").src = data.profilePic;
