@@ -276,7 +276,7 @@
   </div>
   <script>
     console.log("hi");
-  const data = __DATA__;
+  const data = {"fullName":"Sebin Mathew","aboutMe":"sasdasdasd  ","email":"Sebinmathew543@gmail.com","phone":"08606650965","skills":[],"projects":[{"name":"asd asd ","description":"ads dasd ","techStack":"as dasd","github":"http://localhost:5173/form"}],"socialLinks":{"linkedin":"http://localhost:5173/form","github":"http://localhost:5173/form","instagram":"http://localhost:5173/form"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -295,7 +295,7 @@
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><a href=project.github>Projectlink</a>`;
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
     projectsSection.appendChild(div);
   });}
 
