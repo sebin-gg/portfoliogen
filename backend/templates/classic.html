@@ -295,7 +295,7 @@
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><a href=project.github>Projectlink</a>`;
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><p>${project.techStack}</p><a href=${project.github}>Projectlink</a>`;
     projectsSection.appendChild(div);
   });}
 
