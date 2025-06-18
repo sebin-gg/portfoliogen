@@ -75,7 +75,7 @@ const InputPage = () => {
         a.download = "portfolio.html";
         a.click();
         navigate("/result");
-        
+        console.log('client json sent');
       })
       .catch((err) => console.log('json not sent'));
   };
@@ -93,7 +93,7 @@ const InputPage = () => {
 
         {/* About Me */}
         <div className="form-group">
-          <label>About Me</label>
+          <label>About Me*</label>
           <textarea name="aboutMe" rows="4" placeholder="Write something about yourself..." required />
           <button type="button">✨ Suggest with AI</button>
         </div>
@@ -152,25 +152,24 @@ const InputPage = () => {
                 onChange={(e) => handleProjectChange(index, "name", e.target.value)}
               />
               <textarea
-                placeholder="Description"
+                placeholder="Description*"
                 required
                 value={project.description}
                 onChange={(e) => handleProjectChange(index, "description", e.target.value)}
               />
               <input
                 type="text"
-                placeholder="Tech Stack"
+                placeholder="Tech Stack*"
                 required
                 value={project.techStack}
                 onChange={(e) => handleProjectChange(index, "techStack", e.target.value)}
               />
               <input
                 type="url"
-                placeholder="GitHub Repo Link"
+                placeholder="GitHub Repo Link*"
                 required
                 value={project.github}
-                onChange={(e) =>
-                   handleProjectChange(index, "github", e.target.value)}
+                onChange={(e) => handleProjectChange(index, "github", e.target.value)}
               />
             </div>
           ))}
@@ -222,4 +221,5 @@ const InputPage = () => {
   );
 };
 
-export default InputPage;
+export default InputPage; 
+ 
