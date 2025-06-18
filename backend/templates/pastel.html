@@ -287,7 +287,8 @@
     
   </div>
     <script>
-  const data = __DATA__;
+ const data = JSON.parse('__DATA__');
+
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.about;

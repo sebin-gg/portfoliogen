@@ -185,13 +185,11 @@ const InputPage = () => {
     type="url"
     name="linkedin"
     placeholder="LinkedIn Profile URL"
-    required
   />
   <input
     type="url"
     name="github"
     placeholder="GitHub Profile URL"
-    required
   />
   <input
     type="url"
