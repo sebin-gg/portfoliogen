@@ -9,7 +9,7 @@ const upload = multer();
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/form', upload.none(), (req, res) => {
-  console.log(req.body);
+  res.console.log(req.body);
   const { theme,profilePicture,...data } = req.body; 
   console.log(data);
   if (!data) {return res.status(400).send("Data is missing.")};
