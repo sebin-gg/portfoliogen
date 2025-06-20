@@ -268,16 +268,16 @@
 
         <div class="social-links">
           <h2>Find me on:</h2>
-          <a href="error" id="linkedin-link">Linkedin</a>
-          <a href="error" id="github-link">GitHub</a>
-          <a href="error" id="instagram-link">Instagram</a>
+          <a href="#" id="linkedin-link">LinkedIn</a>
+          <a href="#" id="github-link">GitHub</a>
+          <a href="#" id="instagram-link">Instagram</a>
         </div>
       </div>
     </div>    
   </div>
   <script>
-
-  const data = __DATA__;
+    console.log("hi");
+  const data = {"fullName":"Danielle Burks","aboutMe":"Rerum sed quis dolor","email":"disidi@mailinator.com","phone":"+1 (608) 265-3285","skills":[],"projects":[{"name":"Dolore esse exceptu","description":"Omnis ullamco totam ","techStack":"Laudantium enim adi","github":"https://www.pihyzahy.mobi"}],"socialLinks":{"linkedin":"http://localhost:5173/form","github":"http://localhost:5173/form","instagram":"http://localhost:5173/form"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -306,10 +306,9 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
-  document.getElementById("github-link").href = data.socialLinks.github;
-  document.getElementById("instagram-link").href = data.socialLinks.instagram;
+  document.getElementById("linkedin-link").href = data.socials.linkedin;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
 </script>
-
 </body>
 </html>

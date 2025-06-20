@@ -233,6 +233,7 @@
 }</style>
 </head>
 <body>
+  DOMContentLoaded
   <div class="portfolio-container">
 
     <div class="left-section">
@@ -277,7 +278,7 @@
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Nehru Hill","aboutMe":"Est culpa nihil ipsa","email":"mawiler@mailinator.com","phone":"+1 (579) 204-6472","skills":[],"projects":[{"name":"Recusandae Nemo in ","description":"Sint accusantium ne","techStack":"Velit magni volupta","github":"https://www.kalipuf.org.au"}],"socialLinks":{"linkedin":"https://www.fyjam.cc","github":"https://www.niwi.com.au","instagram":"https://www.byxojyv.cm"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -304,12 +305,12 @@
   document.querySelector(".profile-pic img").src = data.profilePic;
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
-
+  
   // Social links
-  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
-  document.getElementById("github-link").href = data.socialLinks.github;
-  document.getElementById("instagram-link").href = data.socialLinks.instagram;
+  console.log('hi')
+  document.getElementById("linkedin-link").href = data.linkedin.value;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
 </script>
-
 </body>
 </html>
