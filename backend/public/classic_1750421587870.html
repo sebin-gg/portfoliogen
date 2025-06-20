@@ -277,7 +277,7 @@
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Nicole Chan","aboutMe":"Voluptate sed adipis","email":"tetit@mailinator.com","phone":"+1 (722) 984-8862","skills":[],"projects":[{"name":"Ex quod rerum molest","description":"Id eum ea culpa temp","techStack":"Quas sunt voluptate ","github":"https://www.zudevehu.us"}],"socialLinks":{"linkedin":"http://localhost:5173/form","github":"http://localhost:5173/form","instagram":"http://localhost:5173/form"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -306,10 +306,10 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
-  document.getElementById("github-link").href = data.socialLinks.github;
-  document.getElementById("instagram-link").href = data.socialLinks.instagram;
+  console.log('hi')
+  document.getElementById("linkedin-link").href = data.linkedin.value;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
 </script>
-
 </body>
 </html>

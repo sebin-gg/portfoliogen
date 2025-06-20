@@ -233,6 +233,7 @@
 }</style>
 </head>
 <body>
+  DOMContentLoaded
   <div class="portfolio-container">
 
     <div class="left-section">
@@ -277,7 +278,7 @@
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Fredericka Phillips","aboutMe":"Et et quidem suscipi","email":"tilogux@mailinator.com","phone":"+1 (247) 944-2593","skills":[],"projects":[{"name":"Ea corrupti sequi s","description":"Et sit et mollit la","techStack":"Tempor ea ut nihil d","github":"https://www.rykamikijud.mobi"}],"socialLinks":{"linkedin":"https://www.watocyfagoz.me.uk","github":"https://www.myqejotyw.ca","instagram":"https://www.puzyhapybuduv.cc"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -306,10 +307,12 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
-  document.getElementById("github-link").href = data.socialLinks.github;
-  document.getElementById("instagram-link").href = data.socialLinks.instagram;
+  
+ document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("linkedin-link").href = data.socials.linkedin;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
+});
 </script>
-
 </body>
 </html>

@@ -239,13 +239,13 @@
 </head>
 <body>
   <div class="portfolio-container">
-    
+
     <div class="left-section">
       <h1 class="intro-title">Hi, I'm <span id="user-name">[Your Name]</span>!</h1>
       <p class="about" id="about-text">
         [A short description about yourself.]
       </p>
-
+      
       <h2>Skills</h2>
       <ul class="skills" id="skills-list">
         <!-- <li>Skill 1</li> -->
@@ -253,15 +253,7 @@
 
       <div class="projects-section" id="projects-section">
         <h2>Projects</h2>
-        <div class="project">
-          <h3>[Project Title 1]</h3>
-          <p>[Short project description]</p>
-        </div>
-        <div class="project">
-          <h3>[Project Title 2]</h3>
-          <p>[Short project description]</p>
-        </div>
-      </div>
+        
     </div>
 
     <div class="right-section">
@@ -281,20 +273,19 @@
 
         <div class="social-links">
           <h2>Find me on:</h2>
-          <a href="#" id="linkedin-link">LinkedIn</a>
-          <a href="#" id="github-link">GitHub</a>
-          <a href="#" id="instagram-link">Instagram</a>
+          <a href="error" id="linkedin-link">Linkedin</a>
+          <a href="error" id="github-link">GitHub</a>
+          <a href="error" id="instagram-link">Instagram</a>
         </div>
       </div>
-    </div>
-    
+    </div>    
   </div>
-    <script>
-  const data = JSON.parse('__DATA__');
+  <script>
 
+  const data = __DATA__;
 
   document.getElementById("user-name").innerText = data.fullName;
-  document.getElementById("about-text").innerText = data.about;
+  document.getElementById("about-text").innerText = data.aboutMe;
 
   // Skills
   const skillsList = document.getElementById("skills-list");
@@ -306,12 +297,13 @@
 
   // Projects
   const projectsSection = document.getElementById("projects-section");
+   if (Array.isArray(data.projects)) {
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><p>${project.techStack}</p><a href=${project.github}>Projectlink</a>`;
     projectsSection.appendChild(div);
-  });
+  });}
 
   // Profile picture and contact
   document.querySelector(".profile-pic img").src = data.profilePic;
@@ -319,9 +311,9 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socials.linkedin;
-  document.getElementById("github-link").href = data.socials.github;
-  document.getElementById("instagram-link").href = data.socials.instagram;
+  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
+  document.getElementById("github-link").href = data.socialLinks.github;
+  document.getElementById("instagram-link").href = data.socialLinks.instagram;
 </script>
 
 </body>

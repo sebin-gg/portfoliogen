@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" /> 
-  <!--This <link> tag imports the Stint Ultra Condensed font from Google Fonts rel="stylesheet" specifies that it's a stylesheet link display=swap ensures text remains visible during font loading (uses fallback until custom font load)-->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" />
 <style>
   body {
-  background-color: #382d72;
+  background-color: #2f4156;
   font-family: 'Segoe UI', sans-serif;
-  color: #e5ccf4;
+  color: white;
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@
   min-height: 100vh;
   padding: 2rem;
   margin: 2rem;
-  border: 3px solid #b7c2c6; /* <- BORDER COLOR PLACEHOLDER */
+  border: 3px solid #567cbd; /* <- BORDER COLOR PLACEHOLDER */
   box-sizing: border-box;
 }
 
@@ -35,7 +35,7 @@
 
 .intro-title {
   font-size: 3rem;
-  color: #a080e1; /* <- TITLE COLOR PLACEHOLDER */
+  color: #567cbd; /* <- TITLE COLOR PLACEHOLDER */
   font-family: 'Segoe UI', sans-serif;
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
@@ -45,7 +45,7 @@
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   animation: slideUpFade 1s ease-out forwards;
-  animation-delay: 0.5s; 
+  animation-delay: 0.5s;
   opacity: 0;
 }
 
@@ -58,18 +58,18 @@
 }
 
 .skills li {
-  background-color: #e5ccf4;
+  background-color: #f5efeb;
   display: inline-block;
   padding: 0.4rem 0.8rem;
   margin: 0.3rem;
   border-radius: 20px;
   font-size: 0.95rem;
-  color: #382d72;
+  color: rgb(31, 34, 43);
 }
 
 /* === PROJECTS SECTION === */
 .projects-section {
-  border: 2px solid #5c509c; /* <- BORDER COLOR PLACEHOLDER */
+  border: 2px solid #567cbd; /* <- BORDER COLOR PLACEHOLDER */
   padding: 1rem;
   margin-top: 1rem;
   animation: slideUpFade 1s ease-out forwards;
@@ -86,10 +86,10 @@
   justify-content: center;
   padding: 2rem ;
   margin-top: 2rem;
-  background-color: #5c509c;
+  background-color: #567cbd;
   border-radius: 15px;
   gap: 0.5rem;
-  box-shadow: 0 0 15px #e5ccf4;
+  box-shadow: 0 0 15px rgba(203, 217, 230, 0.5);
 }
 .profile-contact-wrap {
   display: flex;
@@ -123,7 +123,7 @@
 .circle-outer {
   width: 160px;
   height: 160px;
-  background-color: #a080e1;
+  background-color: #cbd9e6;
   position: absolute;
   top: 0;
   left: 0;
@@ -133,7 +133,7 @@
 .circle-inner {
   width: 140px;
   height: 140px;
-  background-color: #a080e1;
+  background-color: #cbd9e6;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -144,7 +144,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid #e5ccf4;
+  border: 3px solid #cbd9e6;
   object-fit: cover;
   position: relative;
   z-index: 2;
@@ -162,7 +162,7 @@
 }
 
 .social-links a {
-  color:  #b7c2c6;
+  color:  #f5efeb;
   display: block;
   margin: 0.3rem 0;
   text-decoration: none;
@@ -203,24 +203,24 @@
 }
 .profile-pic img:hover {
   transform: scale(1.1) rotate(1deg);
-  box-shadow: 0 0 15px #a080e1, 0 0 30px #e5ccf4;
+  box-shadow: 0 0 15px #cbd9e6, 0 0 30px #cbd9e6;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 .right-section:hover {
-  background-color:#382d72 ;
-  box-shadow: 0 0 15px #e5ccf4 ;
+  background-color:#2f4156 ;
+  box-shadow: 0 0 15px #cbd9e6 ;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 .social-links a:hover {
-  color: #e5ccf4;
+  color: white;
   transform: translateX(5px);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .skills li:hover {
   animation: wiggle 0.4s ease;
-  background-color: #a080e1;
-  color: #ffffff ;
+  background-color: #cbd9e6;
+  color: #2f4156 ;
   cursor: default;
 }
 
@@ -230,25 +230,35 @@
   50% { transform: rotate(-3deg); }
   75% { transform: rotate(2deg); }
   100% { transform: rotate(0deg); }
-}</style>
+}
+
+</style>
 </head>
 <body>
   <div class="portfolio-container">
-
+    
     <div class="left-section">
       <h1 class="intro-title">Hi, I'm <span id="user-name">[Your Name]</span>!</h1>
       <p class="about" id="about-text">
         [A short description about yourself.]
       </p>
-      
+
       <h2>Skills</h2>
       <ul class="skills" id="skills-list">
         <!-- <li>Skill 1</li> -->
       </ul>
-
+      
       <div class="projects-section" id="projects-section">
         <h2>Projects</h2>
-        
+        <div class="project">
+          <h3>[Project Title 1]</h3>
+          <p>[Short project description]</p>
+        </div>
+        <div class="project">
+          <h3>[Project Title 2]</h3>
+          <p>[Short project description]</p>
+        </div>
+      </div>
     </div>
 
     <div class="right-section">
@@ -257,7 +267,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-            <img src="[PROFILE_PIC_URL]" alt="Profile" />
+            <img src="[PROFILE_PIC_URL]" alt="Profile " />
           </div>
         </div>
 
@@ -268,19 +278,20 @@
 
         <div class="social-links">
           <h2>Find me on:</h2>
-          <a href="error" id="linkedin-link">Linkedin</a>
-          <a href="error" id="github-link">GitHub</a>
-          <a href="error" id="instagram-link">Instagram</a>
+          <a href="#" id="linkedin-link">LinkedIn</a>
+          <a href="#" id="github-link">GitHub</a>
+          <a href="#" id="instagram-link">Instagram</a>
         </div>
       </div>
-    </div>    
+    </div>
+    
   </div>
-  <script>
+    <script>
+ const data = JSON.parse('{"fullName":"Barclay Foreman","aboutMe":"Sint ea mollitia eni","email":"pyluwy@mailinator.com","phone":"+1 (645) 353-6105","skills":[],"projects":[{"name":"Deleniti excepteur t","description":"Dolores mollitia eni","techStack":"Quibusdam esse ad n","github":"https://www.zyjowevoceqo.mobi"}],"socialLinks":{"linkedin":"http://localhost:5173/form","github":"http://localhost:5173/form","instagram":"http://localhost:5173/form"}}');
 
-  const data = __DATA__;
 
   document.getElementById("user-name").innerText = data.fullName;
-  document.getElementById("about-text").innerText = data.aboutMe;
+  document.getElementById("about-text").innerText = data.about;
 
   // Skills
   const skillsList = document.getElementById("skills-list");
@@ -292,13 +303,12 @@
 
   // Projects
   const projectsSection = document.getElementById("projects-section");
-   if (Array.isArray(data.projects)) {
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><p>${project.techStack}</p><a href=${project.github}>Projectlink</a>`;
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
     projectsSection.appendChild(div);
-  });}
+  });
 
   // Profile picture and contact
   document.querySelector(".profile-pic img").src = data.profilePic;
@@ -306,9 +316,9 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
-  document.getElementById("github-link").href = data.socialLinks.github;
-  document.getElementById("instagram-link").href = data.socialLinks.instagram;
+  document.getElementById("linkedin-link").href = data.socials.linkedin;
+  document.getElementById("github-link").href = data.socials.github;
+  document.getElementById("instagram-link").href = data.socials.instagram;
 </script>
 
 </body>
