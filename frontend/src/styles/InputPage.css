@@ -135,3 +135,16 @@ select
  {
   color: black;
 }
+.project-input button {
+  margin-top: 0.5rem;
+  background-color: #990608;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-input button:hover {
+  background-color: #e60000;
+}
