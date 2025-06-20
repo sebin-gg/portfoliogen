@@ -4,7 +4,7 @@ import '../styles/ResultPage.css';
 import { useNavigate } from 'react-router-dom';
 
 const ResultPage = () => {
-  const [copied, setCopied] = useState(false);
+  
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
