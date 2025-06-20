@@ -82,7 +82,7 @@ const InputPage = () => {
         navigate("/result");
         console.log('client json sent');
       })
-      .catch((err) => console.log('json not sent'));
+      .catch((err) => console.log('json not sent',err));
   };
 
   return (
@@ -134,9 +134,9 @@ const InputPage = () => {
             <button type="button" onClick={handleSkillAdd}>➕</button>
           </div>
           <div className="skills-list">
-            {skills.map((skill, idx) => (
-              <div key={idx}>
-                {skill} <button type="button" onClick={() => handleSkillRemove(idx)}>x</button>
+            {skills.map((skill, index) => (
+              <div key={index}>
+                {skill} <button type="button" onClick={() => handleSkillRemove(index)}>x</button>
               </div>
             ))}
 
@@ -229,5 +229,5 @@ const InputPage = () => {
   );
 };
 
-export default InputPage; 
+export default InputPage;
  
