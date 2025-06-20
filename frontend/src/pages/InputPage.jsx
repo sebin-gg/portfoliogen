@@ -36,6 +36,11 @@ const InputPage = () => {
       setProjects([...projects, { name: "", description: "", techStack: "", github: "" }]);
     }
   };
+  const removeProject = (index) => {
+  const updatedProjects = [...projects];
+  updatedProjects.splice(index, 1);
+  setProjects(updatedProjects);
+};
 
  
   const handleSubmit = (event) => {
@@ -171,6 +176,9 @@ const InputPage = () => {
                 value={project.github}
                 onChange={(e) => handleProjectChange(index, "github", e.target.value)}
               />
+                {projects.length > 1 && (
+      <button type="button" onClick={() => removeProject(index)}>Remove ❌</button>
+    )}
             </div>
           ))}
           {projects.length < 3 && (
