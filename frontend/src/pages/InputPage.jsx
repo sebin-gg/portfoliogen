@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -46,10 +46,8 @@ const InputPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
- 
     const form = event.target;
 
- 
     const formData = {
       fullName: form.fullName.value,
       aboutMe: form.aboutMe.value,
@@ -63,14 +61,14 @@ const InputPage = () => {
         instagram: form.instagram.value,
       },
       theme: form.theme.value,
+      profilePicture:form.profilePicture.file,
     };
 
     // POST data as JSON
     fetch("http://localhost:3001/form", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-      
+      body: formData,
+
     })
       .then((res) => res.blob())
       .then((blob) => {
@@ -95,7 +93,7 @@ const InputPage = () => {
           <label>Full Name*</label>
           <input type="text" name="fullName" required />
         </div>
-
+        
         {/* About Me */}
         <div className="form-group">
           <label>About Me*</label>
@@ -118,7 +116,7 @@ const InputPage = () => {
         {/* Profile Picture */}
         <div className="form-group">
           <label>Profile Picture</label>
-          <input type="file" accept="image/*" />
+          <input name="profilePicture"  type="file" accept="image/*" />
         </div>
 
         {/* Skills */}

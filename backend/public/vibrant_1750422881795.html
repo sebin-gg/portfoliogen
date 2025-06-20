@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link rel="stylesheet" href="pastel.css" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" />
 <style>
   body {
-  background-color: #2f4156;
+  background-color: #a2e0df;
   font-family: 'Segoe UI', sans-serif;
-  color: white;
+  color: #2f2f2f;
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@
   min-height: 100vh;
   padding: 2rem;
   margin: 2rem;
-  border: 3px solid #567cbd; /* <- BORDER COLOR PLACEHOLDER */
+  border: 3px solid #ff928f; /* <- BORDER COLOR PLACEHOLDER */
   box-sizing: border-box;
 }
 
@@ -35,7 +35,7 @@
 
 .intro-title {
   font-size: 3rem;
-  color: #567cbd; /* <- TITLE COLOR PLACEHOLDER */
+  color: #2f2f2f; /* <- TITLE COLOR PLACEHOLDER */
   font-family: 'Segoe UI', sans-serif;
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
@@ -58,18 +58,18 @@
 }
 
 .skills li {
-  background-color: #f5efeb;
+  background-color: #ecc5f4;
   display: inline-block;
   padding: 0.4rem 0.8rem;
   margin: 0.3rem;
   border-radius: 20px;
   font-size: 0.95rem;
-  color: rgb(31, 34, 43);
+  color: #2f2f2f;
 }
 
 /* === PROJECTS SECTION === */
 .projects-section {
-  border: 2px solid #567cbd; /* <- BORDER COLOR PLACEHOLDER */
+  border: 2px solid #fdd28e; /* <- BORDER COLOR PLACEHOLDER */
   padding: 1rem;
   margin-top: 1rem;
   animation: slideUpFade 1s ease-out forwards;
@@ -86,10 +86,11 @@
   justify-content: center;
   padding: 2rem ;
   margin-top: 2rem;
-  background-color: #567cbd;
+  background-color: #fdd28e;
   border-radius: 15px;
   gap: 0.5rem;
-  box-shadow: 0 0 15px rgba(203, 217, 230, 0.5);
+  color: #5c4033;
+  box-shadow: 0 0 15px rgba(255, 146, 143, 0.5);
 }
 .profile-contact-wrap {
   display: flex;
@@ -123,7 +124,7 @@
 .circle-outer {
   width: 160px;
   height: 160px;
-  background-color: #cbd9e6;
+  background-color: #ff928f;
   position: absolute;
   top: 0;
   left: 0;
@@ -133,7 +134,7 @@
 .circle-inner {
   width: 140px;
   height: 140px;
-  background-color: #cbd9e6;
+  background-color: #ecc5f4;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -144,7 +145,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid #cbd9e6;
+  border: 3px solid #a7d479;
   object-fit: cover;
   position: relative;
   z-index: 2;
@@ -159,10 +160,11 @@
   animation-delay: 0.5s;
   opacity: 0;
   margin-top: 0.2rem;
+  color: #5c4033;
 }
 
 .social-links a {
-  color:  #f5efeb;
+  color:  #ff928f;
   display: block;
   margin: 0.3rem 0;
   text-decoration: none;
@@ -203,24 +205,24 @@
 }
 .profile-pic img:hover {
   transform: scale(1.1) rotate(1deg);
-  box-shadow: 0 0 15px #cbd9e6, 0 0 30px #cbd9e6;
+  box-shadow: 0 0 15px #ff928f, 0 0 30px #fdd28e;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 .right-section:hover {
-  background-color:#2f4156 ;
-  box-shadow: 0 0 15px #cbd9e6 ;
+  background-color:#ecc5f4 ;
+  box-shadow: 0 0 15px #ff928f ;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 .social-links a:hover {
-  color: white;
+  color:#a7d479;
   transform: translateX(5px);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .skills li:hover {
   animation: wiggle 0.4s ease;
-  background-color: #cbd9e6;
-  color: #2f4156 ;
+  background-color: #a7d479;
+  color: #ffffff ;
   cursor: default;
 }
 
@@ -232,33 +234,26 @@
   100% { transform: rotate(0deg); }
 }
 
+
 </style>
 </head>
 <body>
   <div class="portfolio-container">
-    
+
     <div class="left-section">
       <h1 class="intro-title">Hi, I'm <span id="user-name">[Your Name]</span>!</h1>
       <p class="about" id="about-text">
         [A short description about yourself.]
       </p>
-
+      
       <h2>Skills</h2>
       <ul class="skills" id="skills-list">
         <!-- <li>Skill 1</li> -->
       </ul>
-      
+
       <div class="projects-section" id="projects-section">
         <h2>Projects</h2>
-        <div class="project">
-          <h3>[Project Title 1]</h3>
-          <p>[Short project description]</p>
-        </div>
-        <div class="project">
-          <h3>[Project Title 2]</h3>
-          <p>[Short project description]</p>
-        </div>
-      </div>
+        
     </div>
 
     <div class="right-section">
@@ -267,7 +262,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-            <img src="[PROFILE_PIC_URL]" alt="Profile Picture" />
+            <img src="[PROFILE_PIC_URL]" alt="Profile" />
           </div>
         </div>
 
@@ -278,20 +273,19 @@
 
         <div class="social-links">
           <h2>Find me on:</h2>
-          <a href="#" id="linkedin-link">LinkedIn</a>
-          <a href="#" id="github-link">GitHub</a>
-          <a href="#" id="instagram-link">Instagram</a>
+          <a href="error" id="linkedin-link">Linkedin</a>
+          <a href="error" id="github-link">GitHub</a>
+          <a href="error" id="instagram-link">Instagram</a>
         </div>
       </div>
-    </div>
-    
+    </div>    
   </div>
-    <script>
- const data = JSON.parse('{"fullName":"Sebin Mathew","aboutMe":"dsa dsad asd asdasd","email":"Sebinmathew543@gmail.com","phone":"08606650965","skills":["adas dasdasd"],"projects":[{"name":"asdfas f","description":"asd fasf","techStack":"asdf as","github":"http://localhost:5173/form"}],"socialLinks":{"linkedin":"http://localhost:5173/form","github":"http://localhost:5173/form","instagram":"http://localhost:5173/form"}}');
+  <script>
 
+  const data = {"fullName":"Vladimir Benjamin","aboutMe":"Assumenda nulla pari","email":"rabinep@mailinator.com","phone":"+1 (307) 871-5887","skills":[],"projects":[{"name":"Nesciunt consequatu","description":"Id velit anim est a","techStack":"Exercitationem ut ea","github":"https://www.pycexu.in"}],"socialLinks":{"linkedin":"https://www.kuvysibokavi.ca","github":"https://www.kocexyzecug.tv","instagram":"https://www.jewyqy.me.uk"}};
 
   document.getElementById("user-name").innerText = data.fullName;
-  document.getElementById("about-text").innerText = data.about;
+  document.getElementById("about-text").innerText = data.aboutMe;
 
   // Skills
   const skillsList = document.getElementById("skills-list");
@@ -303,12 +297,13 @@
 
   // Projects
   const projectsSection = document.getElementById("projects-section");
+   if (Array.isArray(data.projects)) {
   data.projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project";
-    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p>`;
+    div.innerHTML = `<h3>${project.name}</h3><p>${project.description}</p><p>${project.techStack}</p><a href=${project.github}>Projectlink</a>`;
     projectsSection.appendChild(div);
-  });
+  });}
 
   // Profile picture and contact
   document.querySelector(".profile-pic img").src = data.profilePic;
@@ -316,10 +311,11 @@
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socials.linkedin;
-  document.getElementById("github-link").href = data.socials.github;
-  document.getElementById("instagram-link").href = data.socials.instagram;
+  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
+  document.getElementById("github-link").href = data.socialLinks.github;
+  document.getElementById("instagram-link").href = data.socialLinks.instagram;
 </script>
 
 </body>
 </html>
+
