@@ -28,11 +28,12 @@ app.post("/form", (req, res) => {
 
       const filledHtml = html
         .replace("__DATA__", JSON.stringify(data).replace(/</g, "\\u003c"))
-        .replace("__IMG__", ""); // image not used
 
+        
       fs.writeFile(outputPath, filledHtml, (err) => {
         if (err) return res.status(500).send("Failed to write HTML file.");
         res.download(outputPath);
+        
       });
     });
   } catch (err) {
