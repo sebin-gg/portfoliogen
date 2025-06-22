@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link rel="stylesheet" href="minimal.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" /> 
+  <!--This <link> tag imports the Stint Ultra Condensed font from Google Fonts rel="stylesheet" specifies that it's a stylesheet link display=swap ensures text remains visible during font loading (uses fallback until custom font load)-->
 <style>
   body {
-  background-color: #264025;
+  background-color: #382d72;
   font-family: 'Segoe UI', sans-serif;
-  color: #ddcbb7;
+  color: #e5ccf4;
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@
   min-height: 100vh;
   padding: 2rem;
   margin: 2rem;
-  border: 3px solid #ad6b4b; /* <- BORDER COLOR PLACEHOLDER */
+  border: 3px solid #b7c2c6; /* <- BORDER COLOR PLACEHOLDER */
   box-sizing: border-box;
 }
 
@@ -35,7 +35,7 @@
 
 .intro-title {
   font-size: 3rem;
-  color: #7b4b36; /* <- TITLE COLOR PLACEHOLDER */
+  color: #a080e1; /* <- TITLE COLOR PLACEHOLDER */
   font-family: 'Segoe UI', sans-serif;
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
@@ -45,7 +45,7 @@
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   animation: slideUpFade 1s ease-out forwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.5s; 
   opacity: 0;
 }
 
@@ -58,18 +58,18 @@
 }
 
 .skills li {
-  background-color: #ddcbb7;
+  background-color: #e5ccf4;
   display: inline-block;
   padding: 0.4rem 0.8rem;
   margin: 0.3rem;
   border-radius: 20px;
   font-size: 0.95rem;
-  color: #264025;
+  color: #382d72;
 }
 
 /* === PROJECTS SECTION === */
 .projects-section {
-  border: 2px solid #ad6b4b; /* <- BORDER COLOR PLACEHOLDER */
+  border: 2px solid #5c509c; /* <- BORDER COLOR PLACEHOLDER */
   padding: 1rem;
   margin-top: 1rem;
   animation: slideUpFade 1s ease-out forwards;
@@ -86,10 +86,10 @@
   justify-content: center;
   padding: 2rem ;
   margin-top: 2rem;
-  background-color: #7b4b36;
+  background-color: #5c509c;
   border-radius: 15px;
   gap: 0.5rem;
-  box-shadow: 0 0 15px rgba(173, 107, 75, 0.5);
+  box-shadow: 0 0 15px #e5ccf4;
 }
 .profile-contact-wrap {
   display: flex;
@@ -123,7 +123,7 @@
 .circle-outer {
   width: 160px;
   height: 160px;
-  background-color: #cbd9e6;
+  background-color: #a080e1;
   position: absolute;
   top: 0;
   left: 0;
@@ -133,7 +133,7 @@
 .circle-inner {
   width: 140px;
   height: 140px;
-  background-color: #cbd9e6;
+  background-color: #a080e1;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -144,7 +144,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid #ddcbb7;
+  border: 3px solid #e5ccf4;
   object-fit: cover;
   position: relative;
   z-index: 2;
@@ -162,7 +162,7 @@
 }
 
 .social-links a {
-  color:  #f5efeb;
+  color:  #b7c2c6;
   display: block;
   margin: 0.3rem 0;
   text-decoration: none;
@@ -203,23 +203,23 @@
 }
 .profile-pic img:hover {
   transform: scale(1.1) rotate(1deg);
-  box-shadow: 0 0 15px #ad6b4b, 0 0 30px #ad6b4b;
+  box-shadow: 0 0 15px #a080e1, 0 0 30px #e5ccf4;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 .right-section:hover {
-  background-color:#ad6b4b ;
-  box-shadow: 0 0 15px #f5efeb ;
+  background-color:#382d72 ;
+  box-shadow: 0 0 15px #e5ccf4 ;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 .social-links a:hover {
-  color: #ad6b4b;
+  color: #e5ccf4;
   transform: translateX(5px);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .skills li:hover {
   animation: wiggle 0.4s ease;
-  background-color: #ad6b4b;
+  background-color: #a080e1;
   color: #ffffff ;
   cursor: default;
 }
@@ -230,9 +230,7 @@
   50% { transform: rotate(-3deg); }
   75% { transform: rotate(2deg); }
   100% { transform: rotate(0deg); }
-}
-
-</style>
+}</style>
 </head>
 <body>
   <div class="portfolio-container">
@@ -279,7 +277,7 @@
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Desiree Conrad","aboutMe":"Proident in itaque ","email":"cewyla@mailinator.com","phone":"+1 (301) 623-8771","skills":[],"projects":[{"name":"Nihil velit similiqu","description":"Id occaecat exceptu","techStack":"Voluptatem minima si","github":"https://www.pacecediqi.in"}],"socialLinks":{"linkedin":"https://www.zycarofewixozu.org.uk","github":"https://www.faf.co","instagram":"https://www.vimepyfe.tv"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -315,4 +313,3 @@
 
 </body>
 </html>
-

@@ -259,7 +259,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-            <img src="[PROFILE_PIC_URL]" alt="Profile" />
+           <img src="" alt="Profile" />
           </div>
         </div>
 
@@ -303,7 +303,7 @@
   });}
 
   // Profile picture and contact
-  document.querySelector(".profile-pic img").src = data.profilePic;
+  document.querySelector(".profile-pic img").style.display = "none";
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
 
