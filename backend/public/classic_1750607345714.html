@@ -257,7 +257,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-           <img src="profilepic.jpg" alt="Profile" />
+           <img src="" alt="Profile" />
           </div>
         </div>
 
@@ -271,15 +271,15 @@
           <a href="error" id="linkedin-link">Linkedin</a>
           <a href="error" id="github-link">GitHub</a>
           <a href="error" id="instagram-link">Instagram</a>
-
-
+          <a href="profilepic.jpg" download>Download image File</a>
+          
         </div>
       </div>
     </div>    
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Ina Brewer","aboutMe":"Proident non reicie","email":"xututyg@mailinator.com","phone":"+1 (201) 898-4856","skills":[],"projects":[{"name":"Amet qui aut nostru","description":"Qui autem ut omnis c","techStack":"Esse repudiandae har","github":"https://www.kexopotewob.in"}],"socialLinks":{"linkedin":"https://www.syqema.co.uk","github":"https://www.bohojozywopuf.cc","instagram":"https://www.fulybar.com"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -303,6 +303,7 @@
   });}
 
   // Profile picture and contact
+  document.querySelector(".profile-pic img").style.display = "none";
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
 

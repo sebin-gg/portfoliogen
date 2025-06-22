@@ -257,7 +257,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-           <img src="profilepic.jpg" alt="Profile" />
+           <img src="" alt="Profile" />
           </div>
         </div>
 
@@ -271,15 +271,15 @@
           <a href="error" id="linkedin-link">Linkedin</a>
           <a href="error" id="github-link">GitHub</a>
           <a href="error" id="instagram-link">Instagram</a>
-
-
+          <a href="profilepic.jpg" download>Download image File</a>
+          
         </div>
       </div>
     </div>    
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Graham Freeman","aboutMe":"Dignissimos aut unde","email":"voza@mailinator.com","phone":"+1 (638) 944-7408","skills":[],"projects":[{"name":"Cupidatat rerum ea u","description":"Quaerat minim fuga ","techStack":"Doloremque illum il","github":"https://www.liduxupipej.info"}],"socialLinks":{"linkedin":"https://www.hotybucerud.me","github":"https://www.wacy.in","instagram":"https://www.ker.mobi"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -303,6 +303,7 @@
   });}
 
   // Profile picture and contact
+  document.querySelector(".profile-pic img").style.display = "none";
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
 

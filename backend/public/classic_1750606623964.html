@@ -257,7 +257,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-           <img src="profilepic.jpg" alt="Profile" />
+           <img src="" alt="Profile" />
           </div>
         </div>
 
@@ -271,15 +271,15 @@
           <a href="error" id="linkedin-link">Linkedin</a>
           <a href="error" id="github-link">GitHub</a>
           <a href="error" id="instagram-link">Instagram</a>
-
-
+          <a href="profilepic.jpg" download>Download image File</a>
+          
         </div>
       </div>
     </div>    
   </div>
   <script>
 
-  const data = __DATA__;
+  const data = {"fullName":"Lysandra Britt","aboutMe":"Irure sit dolores ad","email":"nypaso@mailinator.com","phone":"+1 (325) 442-5354","skills":[],"projects":[{"name":"Ab quidem mollit fug","description":"Nobis voluptas offic","techStack":"Natus voluptate volu","github":"https://www.nynifyzigufug.biz"}],"socialLinks":{"linkedin":"https://www.ziderylyz.org.uk","github":"https://www.beqipibasucux.cc","instagram":"https://www.qyloxiryfybigol.tv"}};
 
   document.getElementById("user-name").innerText = data.fullName;
   document.getElementById("about-text").innerText = data.aboutMe;
@@ -303,6 +303,7 @@
   });}
 
   // Profile picture and contact
+  document.querySelector(".profile-pic img").style.display = "none";
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
 

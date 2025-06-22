@@ -87,16 +87,21 @@ const handleSubmit = (event) => {
     })
     .catch((err) => console.log("json not sent", err));
     
-  const downloadFile = () => {
-  const response = form.profilePicture.value; 
-  const blob = response.blob();
-  const url = URL.createObjectURL(blob);
+const downloadFile = () => {
+  
+  const fileInput = document.querySelector('input[name="profilePicture"]');
+  const file = fileInput.files[0]; 
+  
+  if (!file) return alert("No file selected");
+
+  const url = URL.createObjectURL(file);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "profilepic.jpg";
+  a.download = "profilepic.jpg"; 
   a.click();
   URL.revokeObjectURL(url);
 };
+
 downloadFile();
 
 };
