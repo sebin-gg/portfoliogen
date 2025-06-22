@@ -43,41 +43,47 @@ const InputPage = () => {
 };
 
  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    const form = event.target;
-const formData = new FormData();
-formData.append("fullName", form.fullName.value);
-formData.append("aboutMe", form.aboutMe.value);
-formData.append("email", form.email.value);
-formData.append("phone", form.phone.value);
-formData.append("theme", form.theme.value);
-formData.append("profilePicture", form.profilePicture.files[0]);
+const handleSubmit = (event) => {
 
-formData.append("skills", JSON.stringify(skills));
-formData.append("projects", JSON.stringify(projects));
-formData.append("socialLinks", JSON.stringify({
-  linkedin: form.linkedin.value,
-  github: form.github.value,
-  instagram: form.instagram.value,
-}));
+  event.preventDefault();
 
-fetch("http://localhost:3001/form", {
-  method: "POST",
-  body: formData,
-}).then((res) => res.blob())
-  .then((blob) => {
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "portfolio.html";
-    a.click();
-    navigate("/result");
-    console.log("client json sent");
+  const form = event.target;
+
+  const data = {
+    fullName: form.fullName.value,
+    aboutMe: form.aboutMe.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    theme: form.theme.value,
+    skills,
+    projects,
+    socialLinks: {
+      linkedin: form.linkedin.value,
+      github: form.github.value,
+      instagram: form.instagram.value,
+    },
+  };
+
+  fetch("http://localhost:3001/form", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
   })
-  .catch((err) => console.log("json not sent", err));
-}
+    .then((res) => res.blob())
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "portfolio.html";
+      a.click();
+      navigate("/result");
+      console.log("client json sent");
+    })
+    .catch((err) => console.log("json not sent", err));
+};
+
   return (
     <form className="input-page" onSubmit={handleSubmit}>
       <div className="input-content">
