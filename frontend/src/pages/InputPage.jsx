@@ -2,6 +2,8 @@ import  { useState } from "react";
 import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
 
+
+
 const InputPage = () => {
 
   const [skills, setSkills] = useState([]);
@@ -49,6 +51,8 @@ const handleSubmit = (event) => {
 
   const form = event.target;
 
+ 
+
   const data = {
     fullName: form.fullName.value,
     aboutMe: form.aboutMe.value,
@@ -82,6 +86,19 @@ const handleSubmit = (event) => {
       console.log("client json sent");
     })
     .catch((err) => console.log("json not sent", err));
+    
+  const downloadFile = () => {
+  const response = form.profilePicture.value; 
+  const blob = response.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "profilepic.jpg";
+  a.click();
+  URL.revokeObjectURL(url);
+};
+downloadFile();
+
 };
 
   return (
