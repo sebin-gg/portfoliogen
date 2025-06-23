@@ -66,8 +66,9 @@ const handleSubmit = (event) => {
       github: form.github.value,
       instagram: form.instagram.value,
     },
+    time: Date.now()
   };
-
+  const time = data.time
   fetch("http://localhost:3001/form", {
     method: "POST",
     headers: {
@@ -97,7 +98,8 @@ const downloadFile = () => {
   const url = URL.createObjectURL(file);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "profilepic.jpg"; 
+  a.download = `profilepic_${time}.jpg`; 
+
   a.click();
   URL.revokeObjectURL(url);
 };
