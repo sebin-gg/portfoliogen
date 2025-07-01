@@ -100,7 +100,6 @@ const InputPage = () => {
         <div className="form-group">
           <label>About Me*</label>
           <textarea name="aboutMe" rows="4" placeholder="Write something about yourself..." required />
-          <button type="button">✨ Suggest with AI</button>
         </div>
 
         {/* Email */}
@@ -141,7 +140,6 @@ const InputPage = () => {
             ))}
 
           </div>
-          <button type="button">✨ Suggest Skills with AI</button>
         </div>
 
         {/* Projects */}
