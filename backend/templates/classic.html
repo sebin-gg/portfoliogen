@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" /> <!--This <link> tag imports the Stint Ultra Condensed font from Google Fonts rel="stylesheet" specifies that it's a stylesheet link display=swap ensures text remains visible during font loading (uses fallback until custom font load)-->
+  <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet" /> 
+  <!--This <link> tag imports the Stint Ultra Condensed font from Google Fonts rel="stylesheet" specifies that it's a stylesheet link display=swap ensures text remains visible during font loading (uses fallback until custom font load)-->
 <style>
   body {
   background-color: #382d72;
@@ -256,7 +257,7 @@
           <div class="circle circle-outer"></div>
           <div class="circle circle-inner"></div>
           <div class="profile-pic">
-            <img src="[PROFILE_PIC_URL]" alt="Profile Picture" />
+          <img id = "img" src="" alt="Profile" />
           </div>
         </div>
 
@@ -267,15 +268,17 @@
 
         <div class="social-links">
           <h2>Find me on:</h2>
-          <a href="#" id="linkedin-link">LinkedIn</a>
-          <a href="#" id="github-link">GitHub</a>
-          <a href="#" id="instagram-link">Instagram</a>
+          <a href="error" id="linkedin-link">Linkedin</a>
+          <a href="error" id="github-link">GitHub</a>
+          <a href="error" id="instagram-link">Instagram</a>
+
+
         </div>
       </div>
     </div>    
   </div>
   <script>
-    console.log("hi");
+
   const data = __DATA__;
 
   document.getElementById("user-name").innerText = data.fullName;
@@ -300,14 +303,15 @@
   });}
 
   // Profile picture and contact
-  document.querySelector(".profile-pic img").src = data.profilePic;
+  document.getElementById("img").src =`profilepic_${data.time}.jpg`;
   document.getElementById("email").innerText = data.email;
   document.getElementById("phone").innerText = data.phone;
 
   // Social links
-  document.getElementById("linkedin-link").href = data.socials.linkedin;
-  document.getElementById("github-link").href = data.socials.github;
-  document.getElementById("instagram-link").href = data.socials.instagram;
+  document.getElementById("linkedin-link").href = data.socialLinks.linkedin;
+  document.getElementById("github-link").href = data.socialLinks.github;
+  document.getElementById("instagram-link").href = data.socialLinks.instagram;
 </script>
+
 </body>
 </html>

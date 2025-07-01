@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
+
+
 
 const InputPage = () => {
 
@@ -43,47 +45,68 @@ const InputPage = () => {
 };
 
  
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = (event) => {
+
+  event.preventDefault();
+
+  const form = event.target;
 
  
-    const form = event.target;
 
- 
-    const formData = {
-      fullName: form.fullName.value,
-      aboutMe: form.aboutMe.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      skills,
-      projects,
-      socialLinks: {
-        linkedin: form.linkedin.value,
-        github: form.github.value,
-        instagram: form.instagram.value,
-      },
-      theme: form.theme.value,
-    };
-
-    // POST data as JSON
-    fetch("http://localhost:3001/form", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-      
-    })
-      .then((res) => res.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "portfolio.html";
-        a.click();
-        navigate("/result");
-        console.log('client json sent');
-      })
-      .catch((err) => console.log('json not sent'));
+  const data = {
+    fullName: form.fullName.value,
+    aboutMe: form.aboutMe.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    theme: form.theme.value,
+    skills,
+    projects,
+    socialLinks: {
+      linkedin: form.linkedin.value,
+      github: form.github.value,
+      instagram: form.instagram.value,
+    },
+    time: Date.now()
   };
+  const time = data.time
+  fetch("http://localhost:3001/form", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.blob())
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "portfolio.html";
+      a.click();
+      navigate("/result");
+      console.log("client json sent");
+    })
+    .catch((err) => console.log("json not sent", err));
+    
+const downloadFile = () => {
+  
+  const fileInput = document.querySelector('input[name="profilePicture"]');
+  const file = fileInput.files[0]; 
+  
+  if (!file) return alert("No file selected");
+
+  const url = URL.createObjectURL(file);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `profilepic_${time}.jpg`; 
+
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+downloadFile();
+
+};
 
   return (
     <form className="input-page" onSubmit={handleSubmit}>
@@ -95,7 +118,7 @@ const InputPage = () => {
           <label>Full Name*</label>
           <input type="text" name="fullName" required />
         </div>
-
+        
         {/* About Me */}
         <div className="form-group">
           <label>About Me*</label>
@@ -117,7 +140,7 @@ const InputPage = () => {
         {/* Profile Picture */}
         <div className="form-group">
           <label>Profile Picture</label>
-          <input type="file" accept="image/*" />
+          <input name="profilePicture"  type="file" accept="image/*" />
         </div>
 
         {/* Skills */}
@@ -133,9 +156,9 @@ const InputPage = () => {
             <button type="button" onClick={handleSkillAdd}>➕</button>
           </div>
           <div className="skills-list">
-            {skills.map((skill, idx) => (
-              <div key={idx}>
-                {skill} <button type="button" onClick={() => handleSkillRemove(idx)}>x</button>
+            {skills.map((skill, index) => (
+              <div key={index}>
+                {skill} <button type="button" onClick={() => handleSkillRemove(index)}>x</button>
               </div>
             ))}
 
@@ -227,5 +250,5 @@ const InputPage = () => {
   );
 };
 
-export default InputPage; 
+export default InputPage;
  
