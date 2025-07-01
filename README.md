@@ -7,12 +7,12 @@
 ## 🔧 Features
 
 - 📄 One-page input form for user details  
-- 🎨 Four professionally designed themes  
+- 🎨 Four professionally designed themes 
 - 💡 Smooth UI animations and transitions  
 - 🖼 Profile picture integration with visual styling  
-- 🔗 Social media and GitHub link support  
-- 📁 Auto-generated downloadable HTML file  
-- 🧩 Modular and scalable codebase  
+- 🔗 Social media and GitHub link support
+- 📁 Auto-generated downloadable HTML file
+- 🧩 Modular and scalable codebase
 
 ---
 
@@ -66,14 +66,29 @@ portfolio-gen/
 ├── frontend/          # React client
 │   ├── public/
 │   └── src/
-│       └── components/
-│
+│       └── assets/
+│       └── pages/
+│       |   └── Inputpage.jsx
+│       |   └── ResultPage.jsx 
+│       |   └── Welcomepage.jsx
+│       └── styles/
+│       |   └── Inputpage.css
+│       |   └── ResultPage.css 
+│       |   └── Welcomepage.css
+│       └── App.css
+│       └── App.jsx
+│       └── Indesx.css
+│       └── Indesx.jsx
+│   └── Index.html
+│   └── Viteconfig.js
 ├── backend/           # Express server
 │   └── templates/
-│       ├── theme1.html
-│       ├── theme2.html
-│       ├── ...
-│
+│   |   ├── classic.html
+│   |   ├── minimal.html
+│   |   ├── Pastel.html
+|   |   ├── Vibrant.html
+|   |
+│   └── server.js
 └── README.md
 
 ````
