@@ -1,4 +1,4 @@
 # **portfoliogen**: 
-##**A web based portfolio generator**
+**A web based portfolio generator**
 
 ##Description
