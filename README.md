@@ -7,7 +7,7 @@
 ## 🔧 Features
 
 - 📄 One-page input form for user details  
-- 🎨 Four professionally designed themes
+- 🎨 Four professionally designed themes 
 - 💡 Smooth UI animations and transitions  
 - 🖼 Profile picture integration with visual styling  
 - 🔗 Social media and GitHub link support
@@ -26,8 +26,8 @@
 | Lavender Fields Forever    | Elegant and calm palette using lavender tones                 |
 
 **Each theme includes:**
--Consistent structure
--Unique styling using pure CSS  
+- Consistent structure  
+- Unique styling using pure CSS  
 
 ---
 
@@ -123,14 +123,15 @@ npm install
 **Start Frontend (Vite)**
 
 ```bash
-cd frontend
+cd ../frontend
 npm run dev
 ```
+**open another terminal window** 
 
 **Start Backend (Node/Express)**
 
 ```bash
-cd ../backend
+cd backend
 node index.js
 ```
 
