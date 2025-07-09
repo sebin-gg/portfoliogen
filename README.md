@@ -88,7 +88,7 @@ portfolio-gen/
 │   |   ├── Pastel.html
 |   |   ├── Vibrant.html
 |   |
-│   └── server.js
+│   └── index.js
 └── README.md
 
 ````
