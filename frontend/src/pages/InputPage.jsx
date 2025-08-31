@@ -4,6 +4,7 @@ import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
 
 const InputPage = () => {
+  const [template, setTemplate] = useState("classic");
   const [skills, setSkills] = useState([]);
   const [skillInput, setSkillInput] = useState("");
   const [projects, setProjects] = useState([{ name: "", description: "", techStack: "", github: "" }]);
@@ -118,6 +119,15 @@ const InputPage = () => {
           <div className="form-group">
             <label>Profile Picture</label>
             <input type="file" accept="image/*" onChange={e => setProfilePic(e.target.files[0])} />
+          </div>
+          <div className="form-group">
+            <label>Template</label>
+            <select value={template} onChange={e => setTemplate(e.target.value)}>
+              <option value="classic">Classic</option>
+              <option value="minimal">Minimal</option>
+              <option value="vibrant">Vibrant</option>
+              <option value="pastel">Pastel</option>
+            </select>
           </div>
           <button className="generate-btn" type="submit">Generate Portfolio</button>
         </form>
