@@ -26,9 +26,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 function generateHtml(data, profilePicFilename, templateName) {
-  // Load the template HTML file
   const templatePath = path.join(__dirname, "templates", `${templateName}.html`);
   let template = fs.readFileSync(templatePath, "utf-8");
+
+  // Ensure CSS is linked as an external file if it exists
+  const cssFile = `${templateName}.css`;
+  const cssPath = path.join(__dirname, "templates", cssFile);
+  if (fs.existsSync(cssPath)) {
+    // Remove any <style>...</style> blocks and <link rel="stylesheet" ...> for this css
+    template = template.replace(/<style[\s\S]*?<\/style>/gi, "");
+    template = template.replace(/<link[^>]*href=["'][^"']*\.css["'][^>]*>/gi, "");
+    // Insert correct CSS link before </head>
+    template = template.replace(/<\/head>/i, `<link rel="stylesheet" href="${cssFile}" />\n</head>`);
+  }
 
   // Replace <h1> with name
   template = template.replace(/<h1[^>]*>.*?<\/h1>/i, `<h1>${data.fullName}</h1>`);
@@ -40,20 +50,42 @@ function generateHtml(data, profilePicFilename, templateName) {
   if (profilePicFilename) {
     const imgTag = `<img src="./${profilePicFilename}" alt="Profile Picture" width="200"/>`;
     if (/<img[^>]*src=["'][^"']*["'][^>]*>/i.test(template)) {
-      // Replace first <img> tag
       template = template.replace(/<img[^>]*src=["'][^"']*["'][^>]*>/i, imgTag);
     } else {
-      // Insert after <h1>
-  template = template.replace(/(<h1[^>]*>.*?<\/h1>)/i, `$1\n${imgTag}`);
+      template = template.replace(/(<h1[^>]*>.*?<\/h1>)/i, `$1\n${imgTag}`);
     }
   }
 
-  // Optionally, inject skills, projects, etc. (add more replacements as needed)
+  // Always inject skills list (even if empty)
+  const skillsHtml = `<ul class="skills">` + (Array.isArray(data.skills) ? data.skills.map(skill => `<li>${skill}</li>`).join("") : "") + `</ul>`;
+  if (/<ul[^>]*class=["']skills["'][^>]*>[\s\S]*?<\/ul>/i.test(template)) {
+    template = template.replace(/<ul[^>]*class=["']skills["'][^>]*>[\s\S]*?<\/ul>/i, skillsHtml);
+  } else {
+    template = template.replace(/(<h1[^>]*>.*?<\/h1>)/i, `$1\n${skillsHtml}`);
+  }
+
+  // Always inject projects (even if empty)
+  const projectsHtml = `<div class="projects-section">` +
+    (Array.isArray(data.projects) ? data.projects.map(project =>
+      `<div class="project">
+        <h3>${project.name || ""}</h3>
+        <p>${project.description || ""}</p>
+        <p><b>Tech Stack:</b> ${project.techStack || ""}</p>
+        <p><a href="${project.github || "#"}" target="_blank">${project.github ? "GitHub" : ""}</a></p>
+      </div>`
+    ).join("") : "") + `</div>`;
+  if (/<div[^>]*class=["']projects-section["'][^>]*>[\s\S]*?<\/div>/i.test(template)) {
+    template = template.replace(/<div[^>]*class=["']projects-section["'][^>]*>[\s\S]*?<\/div>/i, projectsHtml);
+  } else if (/<ul[^>]*class=["']skills["'][^>]*>[\s\S]*?<\/ul>/i.test(template)) {
+    template = template.replace(/(<ul[^>]*class=["']skills["'][^>]*>[\s\S]*?<\/ul>)/i, `$1\n${projectsHtml}`);
+  } else {
+    template = template.replace(/(<h1[^>]*>.*?<\/h1>)/i, `$1\n${projectsHtml}`);
+  }
+
   return template;
 }
 
 app.post("/form", upload.single("profilePicture"), (req, res) => {
-  // Parse JSON fields sent as strings
   const data = {
     ...req.body,
     skills: JSON.parse(req.body.skills || "[]"),
@@ -65,17 +97,15 @@ app.post("/form", upload.single("profilePicture"), (req, res) => {
     profilePicFilename = req.file.filename;
   }
 
-  // Use template from frontend or fallback to 'classic'
   const templateName = req.body.template || "classic";
   const htmlContent = generateHtml(data, profilePicFilename, templateName);
 
-  // Find and include the CSS file if it exists
-  let cssFile = path.join(__dirname, "templates", `${templateName}.css`);
-  let cssExists = fs.existsSync(cssFile);
-  // If template links to a CSS file, add it to the zip
+  const cssFileName = `${templateName}.css`;
+  const cssFilePath = path.join(__dirname, "templates", cssFileName);
+  const cssExists = fs.existsSync(cssFilePath);
 
   const archive = archiver("zip");
-  res.setHeader("Content-Disposition", `attachment; filename=portfolio.zip");
+  res.setHeader("Content-Disposition", `attachment; filename=portfolio.zip`);
   res.setHeader("Content-Type", "application/zip");
 
   archive.append(htmlContent, { name: "portfolio.html" });
@@ -83,7 +113,7 @@ app.post("/form", upload.single("profilePicture"), (req, res) => {
     archive.file(path.join(__dirname, "uploads", profilePicFilename), { name: profilePicFilename });
   }
   if (cssExists) {
-    archive.file(cssFile, { name: `${templateName}.css` });
+    archive.file(cssFilePath, { name: cssFileName });
   }
   archive.finalize();
   archive.pipe(res);
