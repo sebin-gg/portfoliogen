@@ -1,252 +1,129 @@
-import  { useState } from "react";
+import React, { useState } from "react";
+import { API_URL } from "../api";
 import "../styles/InputPage.css";
 import { useNavigate } from "react-router-dom";
-import "../../frontend/api";
 
 const InputPage = () => {
-
   const [skills, setSkills] = useState([]);
   const [skillInput, setSkillInput] = useState("");
-
-
   const [projects, setProjects] = useState([{ name: "", description: "", techStack: "", github: "" }]);
-
+  const [profilePic, setProfilePic] = useState(null);
+  const [fullName, setFullName] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   const navigate = useNavigate();
 
-
   const handleSkillAdd = () => {
-    if (skillInput.trim() && !skills.includes(skillInput.trim())) {
+    if (skillInput.trim()) {
       setSkills([...skills, skillInput.trim()]);
       setSkillInput("");
     }
   };
-  
+
   const handleSkillRemove = (index) => {
     setSkills(skills.filter((_, i) => i !== index));
   };
-  
-  const handleProjectChange = (index, field, value) => {
-    const updatedProjects = [...projects];
-    updatedProjects[index][field] = value;
-    setProjects(updatedProjects);
-  };
 
+  const handleProjectChange = (index, field, value) => {
+    const newProjects = [...projects];
+    newProjects[index][field] = value;
+    setProjects(newProjects);
+  };
 
   const addProject = () => {
-    if (projects.length < 3) {
-      setProjects([...projects, { name: "", description: "", techStack: "", github: "" }]);
-    }
+    setProjects([...projects, { name: "", description: "", techStack: "", github: "" }]);
   };
+
   const removeProject = (index) => {
-  const updatedProjects = [...projects];
-  updatedProjects.splice(index, 1);
-  setProjects(updatedProjects);
-};
-
- 
-const handleSubmit = (event) => {
-
-  event.preventDefault();
-
-  const form = event.target;
-
- 
-
-  const data = {
-    fullName: form.fullName.value,
-    aboutMe: form.aboutMe.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    theme: form.theme.value,
-    skills,
-    projects,
-    socialLinks: {
-      linkedin: form.linkedin.value,
-      github: form.github.value,
-      instagram: form.instagram.value,
-    },
-    time: Date.now()
+    setProjects(projects.filter((_, i) => i !== index));
   };
-  const time = data.time
-  fetch(`${API_URL}/form`, { method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.blob())
-    .then((blob) => {
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("aboutMe", aboutMe);
+    formData.append("skills", JSON.stringify(skills));
+    formData.append("projects", JSON.stringify(projects));
+    if (profilePic) {
+      formData.append("profilePicture", profilePic);
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/form`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        alert("Failed to generate portfolio.");
+        return;
+      }
+
+      const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "portfolio.html";
+      a.download = "portfolio.zip";
+      document.body.appendChild(a);
       a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
       navigate("/result");
-      console.log("client json sent");
-    })
-    .catch((err) => console.log("json not sent", err));
-    
-const downloadFile = () => {
-  
-  const fileInput = document.querySelector('input[name="profilePicture"]');
-  const file = fileInput.files[0]; 
-  
-  if (!file) return alert("No file selected");
-
-  const url = URL.createObjectURL(file);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `profilepic_${time}.jpg`; 
-
-  a.click();
-  URL.revokeObjectURL(url);
-};
-
-downloadFile();
-
-};
+    } catch (error) {
+      alert("Error generating portfolio.");
+    }
+  };
 
   return (
-    <form className="input-page" onSubmit={handleSubmit}>
+    <div className="input-page">
       <div className="input-content">
-        <h1>Let's build your portfolio</h1>
-
-        {/* Full Name */}
-        <div className="form-group">
-          <label>Full Name*</label>
-          <input type="text" name="fullName" required />
-        </div>
-        
-        {/* About Me */}
-        <div className="form-group">
-          <label>About Me*</label>
-          <textarea name="aboutMe" rows="4" placeholder="Write something about yourself..." required />
-        </div>
-
-        {/* Email */}
-        <div className="form-group">
-          <label>Email ID*</label>
-          <input type="email" name="email" required />
-        </div>
-
-        {/* Phone */}
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input type="tel" name="phone" />
-        </div>
-
-        {/* Profile Picture */}
-        <div className="form-group">
-          <label>Profile Picture</label>
-          <input name="profilePicture"  type="file" accept="image/*" />
-        </div>
-
-        {/* Skills */}
-        <div className="form-group">
-          <label>Skills</label>
-          <div className="skills-input">
-            <input
-              type="text"
-              placeholder="Type a skill..."
-              value={skillInput}
-              onChange={(e) => setSkillInput(e.target.value)}
-            />
-            <button type="button" onClick={handleSkillAdd}>➕</button>
+        <h1>Portfolio Generator</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input value={fullName} onChange={e => setFullName(e.target.value)} required />
           </div>
-          <div className="skills-list">
-            {skills.map((skill, index) => (
-              <div key={index}>
-                {skill} <button type="button" onClick={() => handleSkillRemove(index)}>x</button>
+          <div className="form-group">
+            <label>About Me</label>
+            <textarea value={aboutMe} onChange={e => setAboutMe(e.target.value)} required />
+          </div>
+          <div className="form-group">
+            <label>Skills</label>
+            <div className="skills-input">
+              <input value={skillInput} onChange={e => setSkillInput(e.target.value)} />
+              <button type="button" onClick={handleSkillAdd}>Add</button>
+            </div>
+            <div className="skills-list">
+              {skills.map((skill, idx) => (
+                <span key={idx}>
+                  {skill} <button type="button" onClick={() => handleSkillRemove(idx)}>x</button>
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Projects</label>
+            {projects.map((project, idx) => (
+              <div className="project-input" key={idx}>
+                <input placeholder="Name" value={project.name} onChange={e => handleProjectChange(idx, "name", e.target.value)} />
+                <input placeholder="Description" value={project.description} onChange={e => handleProjectChange(idx, "description", e.target.value)} />
+                <input placeholder="Tech Stack" value={project.techStack} onChange={e => handleProjectChange(idx, "techStack", e.target.value)} />
+                <input placeholder="GitHub Link" value={project.github} onChange={e => handleProjectChange(idx, "github", e.target.value)} />
+                {projects.length > 1 && <button type="button" onClick={() => removeProject(idx)}>Remove</button>}
               </div>
             ))}
-
+            <button type="button" onClick={addProject}>Add Project</button>
           </div>
-        </div>
-
-        {/* Projects */}
-        <div className="form-group">
-          <label>Projects (max 3)</label>
-          {projects.map((project, index) => (
-            <div className="project-input" key={index}>
-              <input
-                type="text"
-                placeholder="Project Name*"
-                required
-                value={project.name}
-                onChange={(e) => handleProjectChange(index, "name", e.target.value)}
-              />
-              <textarea
-                placeholder="Description*"
-                required
-                value={project.description}
-                onChange={(e) => handleProjectChange(index, "description", e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Tech Stack*"
-                required
-                value={project.techStack}
-                onChange={(e) => handleProjectChange(index, "techStack", e.target.value)}
-              />
-              <input
-                type="url"
-                placeholder="GitHub Repo Link*"
-                required
-                value={project.github}
-                onChange={(e) => handleProjectChange(index, "github", e.target.value)}
-              />
-                {projects.length > 1 && (
-      <button type="button" onClick={() => removeProject(index)}>Remove ❌</button>
-    )}
-            </div>
-          ))}
-          {projects.length < 3 && (
-            <button type="button" onClick={addProject}>Add Another Project</button>
-          )}
-        </div>
-
-{/* Social Links */}
-<div className="form-group">
-  <label>Social Links</label>
-  <input
-    type="url"
-    name="linkedin"
-    placeholder="LinkedIn Profile URL"
-  />
-  <input
-    type="url"
-    name="github"
-    placeholder="GitHub Profile URL"
-  />
-  <input
-    type="url"
-    name="instagram"
-    placeholder="Instagram Profile URL"
-  />
-</div>
-
-      {/* Theme Selection */}
-      <div className="form-group">
-        <label>Select a Theme*</label>
-        <select name= "theme" required>
-          <option value="">--Choose a Theme--</option>
-          <option value="pastel">Professional Blue</option>
-          <option value="minimal">Earthy Calm</option>
-          <option value="vibrant">Playful Macaron</option>
-          <option value="classic">Lavender Fields</option>
-        </select>
+          <div className="form-group">
+            <label>Profile Picture</label>
+            <input type="file" accept="image/*" onChange={e => setProfilePic(e.target.files[0])} />
+          </div>
+          <button className="generate-btn" type="submit">Generate Portfolio</button>
+        </form>
       </div>
-
-        {/* Submit Button */}
-        <div className="form-group">
-          <button className="generate-btn" type="submit">
-            Generate Portfolio🚀
-          </button>
-        </div>
-      </div>
-    </form>
+    </div>
   );
 };
 
 export default InputPage;
- 
