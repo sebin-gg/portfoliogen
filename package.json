@@ -14,5 +14,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview"
+  },
+  "overrides": {
+    "picomatch": "^2.3.2"
   }
 }
