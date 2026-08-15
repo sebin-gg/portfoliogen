@@ -26,8 +26,9 @@ jobs:
             for (let i = 0; i < 90; i++) {
               const { data: checks } = await github.rest.checks.listForRef({ owner, repo, ref: sha });
               const { data: status } = await github.rest.repos.getCombinedStatusForRef({ owner, repo, ref: sha });
-              const runs = checks.check_runs.filter(r => r.name !== 'auto-merge');
-              const statuses = status.statuses || [];
+              const isVercel = s => s.name?.startsWith('Vercel') || s.context?.startsWith('Vercel');
+              const runs = checks.check_runs.filter(r => r.name !== 'auto-merge' && !isVercel(r));
+              const statuses = (status.statuses || []).filter(s => !isVercel(s));
               const allRunsDone = runs.every(r => r.status === 'completed');
               const allStatusesDone = statuses.every(s => s.state !== 'pending');
               const hasAnything = runs.length > 0 || statuses.length > 0;
