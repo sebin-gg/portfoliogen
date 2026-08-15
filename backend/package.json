@@ -10,7 +10,7 @@
     "archiver": "^7.0.1",
     "body-parser": "^2.2.0",
     "cors": "^2.8.6",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "multer": "^2.0.1"
   },
   "license": "ISC"
