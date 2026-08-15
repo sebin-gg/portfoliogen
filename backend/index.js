@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
-const archiver = require("archiver");
+const { ZipArchive } = require("archiver");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -104,7 +104,7 @@ app.post("/form", upload.single("profilePicture"), (req, res) => {
   const cssFilePath = path.join(__dirname, "templates", cssFileName);
   const cssExists = fs.existsSync(cssFilePath);
 
-  const archive = archiver("zip");
+  const archive = new ZipArchive();
   res.setHeader("Content-Disposition", `attachment; filename=portfolio.zip`);
   res.setHeader("Content-Type", "application/zip");
 
