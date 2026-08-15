@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.6"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.6.0",
