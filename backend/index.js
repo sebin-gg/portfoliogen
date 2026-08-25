@@ -26,7 +26,8 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    const ext = path.extname(file.originalname);
+    // Keep only a plain extension - originalname is attacker-controlled.
+    const ext = path.extname(file.originalname).replace(/[^.a-zA-Z0-9]/g, "").slice(0, 10);
     const filename = `profilepic_${Date.now()}${ext}`;
     cb(null, filename);
   },
@@ -35,6 +36,16 @@ const upload = multer({ storage: storage });
 
 // Only allow simple names so the value can never traverse directories.
 const TEMPLATE_NAME_RE = /^[A-Za-z0-9_-]{1,64}$/;
+const TEMPLATES_ROOT = path.resolve(__dirname, "templates");
+const UPLOADS_ROOT = path.resolve(__dirname, "uploads");
+
+function safeJoin(root, relativeName) {
+  const candidate = path.resolve(root, relativeName);
+  if (candidate !== root && !candidate.startsWith(root + path.sep)) {
+    return null;
+  }
+  return candidate;
+}
 
 function esc(value) {
   return String(value)
@@ -130,12 +141,13 @@ function insertAfterFirstH1(template, newContent) {
 }
 
 function generateHtml(data, profilePicFilename, templateName) {
-  const templatePath = path.join(__dirname, "templates", `${templateName}.html`);
+  const templatePath = safeJoin(TEMPLATES_ROOT, `${templateName}.html`);
+  if (!templatePath) return null;
   let template = fs.readFileSync(templatePath, "utf-8");
 
   // Ensure CSS is linked as an external file if it exists
   const cssFile = `${templateName}.css`;
-  const cssPath = path.join(__dirname, "templates", cssFile);
+  const cssPath = safeJoin(TEMPLATES_ROOT, cssFile);
   if (fs.existsSync(cssPath)) {
     template = removeStyleBlocks(template);
     template = removeCssLinkTags(template);
@@ -258,10 +270,13 @@ app.post("/form", formLimiter, upload.single("profilePicture"), (req, res) => {
     return res.status(400).json({ error: "Invalid template name" });
   }
   const htmlContent = generateHtml(data, profilePicFilename, templateName);
+  if (htmlContent === null) {
+    return res.status(400).json({ error: "Invalid template name" });
+  }
 
   const cssFileName = `${templateName}.css`;
-  const cssFilePath = path.join(__dirname, "templates", cssFileName);
-  const cssExists = fs.existsSync(cssFilePath);
+  const cssFilePath = safeJoin(TEMPLATES_ROOT, cssFileName);
+  const cssExists = cssFilePath !== null && fs.existsSync(cssFilePath);
 
   const archive = new ZipArchive();
   res.setHeader("Content-Disposition", `attachment; filename=portfolio.zip`);
@@ -269,7 +284,10 @@ app.post("/form", formLimiter, upload.single("profilePicture"), (req, res) => {
 
   archive.append(htmlContent, { name: "portfolio.html" });
   if (profilePicFilename) {
-    archive.file(path.join(__dirname, "uploads", profilePicFilename), { name: profilePicFilename });
+    const uploadPath = safeJoin(UPLOADS_ROOT, profilePicFilename);
+    if (uploadPath) {
+      archive.file(uploadPath, { name: profilePicFilename });
+    }
   }
   if (cssExists) {
     archive.file(cssFilePath, { name: cssFileName });
