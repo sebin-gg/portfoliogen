@@ -1,15 +1,15 @@
 # 🎯 Portfolio Gen
 
-**Portfolio Gen** is a responsive, theme-based portfolio website generator built with **React** and **Node.js**. It enables users to quickly generate a professional personal website by entering key information and selecting from beautifully designed themes.
+**Portfolio Gen** is a responsive, theme-based portfolio website generator built with **React** and **Node.js**. Enter your details once, pick a theme, and get a professional personal website as a downloadable HTML file.
 
 ---
 
 ## 🔧 Features
 
-- 📄 One-page input form for user details  
+- 📄 One-page input form for user details
 - 🎨 Four professionally designed themes
-- 💡 Smooth UI animations and transitions  
-- 🖼 Profile picture integration with visual styling  
+- 💡 Smooth UI animations and transitions
+- 🖼 Profile picture integration with visual styling
 - 🔗 Social media and GitHub link support
 - 📁 Auto-generated downloadable HTML file
 - 🧩 Modular and scalable codebase
@@ -18,16 +18,16 @@
 
 ## 🖌 Themes
 
-| **Theme**                   | **Description**                                               |
-|----------------------------|---------------------------------------------------------------|
-| Professional Blue          | Corporate and modern look with blue and teal tones            |
-| Earthy Calm                | Nature-inspired theme with muted green and brown hues         |
-| Marvelous Macarons         | Soft and colorful pastels with a playful vibe                 |
-| Lavender Fields Forever    | Elegant and calm palette using lavender tones                 |
+Four themes ship as standalone HTML templates in `backend/templates/`, each styled with pure CSS:
 
-**Each theme includes:**
--Consistent structure  
--Unique styling using pure CSS  
+| Theme   | Template        | Description                                        |
+|---------|-----------------|----------------------------------------------------|
+| Classic | `classic.html`  | Rich purple and lavender palette                   |
+| Minimal | `minimal.html`  | Understated layout in muted green and brown hues   |
+| Pastel  | `pastel.html`   | Calm, elegant look built on soft blue tones        |
+| Vibrant | `vibrant.html`  | Playful mix of teal, pink, orange, and coral       |
+
+Each theme keeps the same content structure and differs only in styling.
 
 ---
 
@@ -35,15 +35,15 @@
 
 The app collects the following user inputs:
 
-- **Full Name** *(required)*  
-- **About Me** *(required)*  
-- **Email Address** *(required)*  
-- **Phone Number** *(optional)*  
-- **Profile Picture**  
-- **Skills** *(add/remove supported)*  
-- **Projects** (up to 3 with name, description, tech stack, GitHub link)  
-- **Social Links** (LinkedIn, GitHub, Instagram)  
-- **Theme Selection** (from the 4 available themes)  
+- **Full Name** *(required)*
+- **About Me** *(required)*
+- **Email Address** *(required)*
+- **Phone Number** *(optional)*
+- **Profile Picture**
+- **Skills** *(add/remove supported)*
+- **Projects** (up to 3 with name, description, tech stack, GitHub link)
+- **Social Links** (LinkedIn, GitHub, Instagram)
+- **Theme Selection** (from the 4 available themes)
 
 ---
 
@@ -51,56 +51,51 @@ The app collects the following user inputs:
 
 | Area      | Technology           |
 |-----------|----------------------|
-| Frontend  | React (Vite)         |
+| Frontend  | React 19 (Vite)      |
 | Backend   | Node.js, Express     |
 | Styling   | Modular CSS          |
+| Deploy    | GitHub Pages (`gh-pages`) |
 
 ---
 
 ## 🗂 Project Structure
 
 ```
-
-portfolio-gen/
-│
-├── frontend/          # React client
+portfoliogen/
+├── frontend/              # React client
 │   ├── public/
-│   └── src/
-│       └── assets/
-│       └── pages/
-│       |   └── Inputpage.jsx
-│       |   └── ResultPage.jsx 
-│       |   └── Welcomepage.jsx
-│       └── styles/
-│       |   └── Inputpage.css
-│       |   └── ResultPage.css 
-│       |   └── Welcomepage.css
-│       └── App.css
-│       └── App.jsx
-│       └── Indesx.css
-│       └── Indesx.jsx
-│   └── Index.html
-│   └── Viteconfig.js
-├── backend/           # Express server
-│   └── templates/
-│   |   ├── classic.html
-│   |   ├── minimal.html
-│   |   ├── Pastel.html
-|   |   ├── Vibrant.html
-|   |
-│   └── index.js
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── pages/
+│   │   │   ├── InputPage.jsx
+│   │   │   ├── ResultPage.jsx
+│   │   │   └── WelcomePage.jsx
+│   │   ├── styles/
+│   │   │   ├── InputPage.css
+│   │   │   ├── ResultPage.css
+│   │   │   └── WelcomePage.css
+│   │   ├── App.jsx
+│   │   ├── api.js
+│   │   └── main.jsx
+│   ├── index.html
+│   └── vite.config.js
+├── backend/               # Express server
+│   ├── templates/         # Theme templates (classic, minimal, pastel, vibrant)
+│   ├── index.js
+├── package.json           # Root scripts (dev/build/deploy via gh-pages)
 └── README.md
-
-````
+```
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/sebin-gg/portfoliogen.git
-````
+cd portfoliogen
+```
 
 ### 2. Install Dependencies
 
@@ -120,22 +115,54 @@ npm install
 
 ### 3. Run the App
 
-**Start Frontend (Vite)**
-
-```bash
-cd ../frontend
-npm run dev
-```
-**open another terminal window**
-
 **Start Backend (Node/Express)**
 
 ```bash
-cd backend
+cd ../backend
 node index.js
 ```
 
+The server runs on [http://localhost:5000](http://localhost:5000).
+
+**Start Frontend (Vite)**
+
+In another terminal window:
+
+```bash
+cd frontend
+npm run dev
+```
+
 Then open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 📦 Build and Deploy
+
+Build the frontend for production and preview it locally:
+
+```bash
+cd frontend
+npm run build     # outputs to frontend/dist
+npm run preview   # serve the production build locally
+```
+
+Deploy to GitHub Pages using the root `package.json` scripts:
+
+```bash
+npm run deploy    # predeploy runs the build, then gh-pages publishes dist
+```
+
+> **Config note:** when deploying under a subpath such as `/portfoliogen/`, set `base` in `frontend/vite.config.js` accordingly. Use `'/'` for local development.
+
+---
+
+## 🧭 Customization Pointers
+
+- **Themes:** edit the HTML/CSS templates in `backend/templates/`
+- **Form fields and validation:** `frontend/src/pages/InputPage.jsx`
+- **API calls to the backend:** `frontend/src/api.js`
+- **Server routes and generation logic:** `backend/index.js`
 
 ---
 
@@ -143,8 +170,8 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
 Created by:
 
-* **Sebin** – Backend logic, integration, deployment
-* **Lisha** – Frontend development, design, styling
+* **Sebin**: backend logic, integration, deployment
+* **Lisha**: frontend development, design, styling
 
 ---
 
@@ -186,4 +213,3 @@ git commit --no-verify -m "emergency commit"
 ```
 
 > ⚠️ Only use `--no-verify` in emergency situations. Regular commits should always be scanned.
-
