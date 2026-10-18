@@ -150,7 +150,7 @@ npm run preview   # serve the production build locally
 Deploy to GitHub Pages using the root `package.json` scripts:
 
 ```bash
-npm run deploy    # predeploy runs the build, then gh-pages publishes dist
+npm run deploy    # predeploy builds the frontend, then gh-pages publishes frontend/dist
 ```
 
 > **Config note:** when deploying under a subpath such as `/portfoliogen/`, set `base` in `frontend/vite.config.js` accordingly. Use `'/'` for local development.

@@ -9,6 +9,9 @@
     "start": "vite",
     "preview": "vite preview"
   },
+  "overrides": {
+    "brace-expansion": "5.0.12"
+  },
   "dependencies": {
     "react": "^19.1.0",
     "react-confetti": "^6.4.0",
